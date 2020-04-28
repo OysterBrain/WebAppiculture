@@ -1,22 +1,22 @@
-<h1 class="addedit__title">INSERER AJOUT OU MODIF ICI</h1>
-
+<h1 class="addedit__title" *ngIf="modif">Modification Rucher {{id}}</h1>
+<h1 class="addedit__title" *ngIf="!modif">Ajout Rucher </h1>
 <section class="addedit__section">
   <p class="addedit__section__p">Identifiant : </p>
-  <input class="addedit__section__input" type="text"/>
+  <input class="addedit__section__input" type="text"  [(ngModel)]="id" [ngModelOptions]="{standalone: true}"/>
 
   <p class="addedit__section__p">Nombre de ruches : </p>
-  <input class="addedit__section__input" type="number"/>
+  <input class="addedit__section__input" type="number"  [(ngModel)]="nbRuches" [ngModelOptions]="{standalone: true}"/>
 
   <p class="addedit__section__p">Descriptif environnement : </p>
-  <select class="addedit__section__select">
-    <!-- Listes des environnements définis dans config-->
+  <select class="addedit__section__select"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}">
+    <option *ngFor="let env of listEnv">{{env}}</option>
   </select>
 
-  <p class="addedit__section__p">Coordonnées géographiques : </p>
-  <input class="addedit__section__input" type="text"/>
-
+  <!-- <p class="addedit__section__p">Coordonnées géographiques : </p>
+  <input class="addedit__section__input" type="text"/> -->
+<!-- 
   <p class="addedit__section__p">Date de création du rucher : </p>
-  <input class="addedit__section__input" type="text"/>
+  <input class="addedit__section__input" type="text"/> -->
 
   <table class="addedit__section__table">
     <thead class="addedit__section__table_name">Historique des visites</thead>
@@ -24,8 +24,8 @@
   </table>
 
   <p class="addedit__section__p">Fréquence des visites </p>
-  <input class="addedit__section__input" type="number"/>
+  <input class="addedit__section__input" type="number"  [(ngModel)]="freqVisite" [ngModelOptions]="{standalone: true}"/>
 
-  <a class="addedit__submit">Valider</a>
+  <a class="addedit__submit" (click)="validate()">Valider</a>
 
 </section>
