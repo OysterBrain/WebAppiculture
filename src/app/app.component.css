@@ -1,0 +1,10 @@
+.header {
+  background-color: white;
+  text-align: center;
+}
+
+.header__logo {
+  width : 15rem;
+}
+
+
