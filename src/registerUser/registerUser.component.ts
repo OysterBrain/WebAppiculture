@@ -13,6 +13,7 @@ export class RegisterUserComponent implements OnInit {
   public email :string;
   public password :string;
   public passwordConfirm : string;
+  public error :string;
   
   ngOnInit() {
     
@@ -22,8 +23,12 @@ export class RegisterUserComponent implements OnInit {
     if(this.password == this.passwordConfirm && this.email != null){
       if(!this.userService.userInserted(this.email)){
         this.userService.insertNewUser(this.email,this.password);
-        
+      }else{
+        this.error = "Erreur : email deja existant"; 
       }
+    }
+    else{
+      this.error = "Erreur lors de la saisie"; 
     }
   }
 }

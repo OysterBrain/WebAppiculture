@@ -13,11 +13,11 @@ import { RegisterUserComponent } from '../registerUser/registerUser.component';
 //Tableau des routes qui comporte l'ensemble des routes permettant de naviguer dans l'application
 const routes: Routes = [
     //  { path: '', component: ACCUEILCOMPONENT, canActivate: [AuthGuard] },
-    { path: '', component: AccueilComponent},
-    { path: 'Configuration', component: ConfigurationComponent},
-    { path: 'GestionRuches', component: GestionRuchersComponent},
-    { path: 'ListeRuchers', component: ListeRuchersComponent},
-    { path: 'CarteRuchers', component: CarteRucherComponent},
+    { path: '', component: AccueilComponent, canActivate: [AuthGuard]},
+    { path: 'Configuration', component: ConfigurationComponent,canActivate: [AuthGuard]},
+    { path: 'GestionRuches', component: GestionRuchersComponent,canActivate: [AuthGuard]},
+    { path: 'ListeRuchers', component: ListeRuchersComponent,canActivate: [AuthGuard]},
+    { path: 'CarteRuchers', component: CarteRucherComponent,canActivate: [AuthGuard]},
     { path: 'Login', component: LoginComponent },
     { path: 'Register', component: RegisterUserComponent}
 ];

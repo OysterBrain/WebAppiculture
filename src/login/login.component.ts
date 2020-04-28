@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { User } from '../models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,29 @@ import { User } from '../models/User';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService : LoginService) { }
+  constructor(private loginService : LoginService,private router: Router) { }
   
   public email :string;
   public password :string;
-
+  public error :string;
   ngOnInit() {
-    
+    if(this.loginService.getUserConnected()){
+      this.router.navigate(['']);
+    }
   }
 
+  //fonction qui est declenché lors du submit pour connecter l'utilisateur
   onSubmit(){
-    this.loginService.connectUser(this.email,this.password);
+      if(this.loginService.connectUser(this.email,this.password)){
+        this.router.navigate(['']);
+      }else{
+        this.error = "Echec de la connexion"; 
+      }
   }
+  goToRegister(){
+    this.router.navigate(['/Register']);
+  }
+  
+
 
 }
