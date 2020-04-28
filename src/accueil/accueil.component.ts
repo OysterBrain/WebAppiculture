@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/services/login.service';
+import { User } from 'src/models/User';
 
 @Component({
   selector: 'app-accueil',
@@ -9,6 +10,7 @@ import { LoginService } from 'src/services/login.service';
 })
 export class AccueilComponent implements OnInit {
 
+  
   constructor(private router: Router, private loginService : LoginService) { }
 
   ngOnInit() {
@@ -21,7 +23,7 @@ export class AccueilComponent implements OnInit {
     this.router.navigate([url]);
   }
   
-  //fonction declenché lorsque le bouton se deconnecter est cliqué et appel disconnectUser de LoginService
+  //fonction declenchée lorsque le bouton se deconnecter est cliqué et appel disconnectUser de LoginService
   deconnect(){
     this.loginService.disconnectUser();
     this.router.navigate(["/Login"]);

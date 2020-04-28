@@ -23,7 +23,11 @@ export class LoginService {
 
     //fonction qui retourne l'email de l'utilisateur connecté.
     getUserConnected(){
-        return localStorage.getItem("currentUser");
+       return localStorage.getItem("currentUser");
+    }
+
+    userConnected(){
+        return localStorage.getItem("currentUser")?true:false;
     }
 
     //fonction qui deconnecte un utilisateur en supprimant "currentUser"

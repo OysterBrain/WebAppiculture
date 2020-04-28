@@ -16,8 +16,8 @@ export class UserService {
     localStorage.setItem(email,JSON.stringify(user));
   }
 
-  //fonction qui retourne un booleen en fonction si l'email de l'utilisateur existe
+  //fonction qui retourne l'utilisateur en fonction de l'email de l'utilisateur 
   userInserted(email){
-    return localStorage.getItem(email);
+    return JSON.parse(localStorage.getItem(email));
   }
 }

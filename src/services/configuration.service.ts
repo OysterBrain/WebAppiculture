@@ -4,18 +4,19 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
   })
 export class ConfigurationService {
+  
+  constructor() { }
 
-constructor() { }
+  getConfigurationByEmail(email){
+    return JSON.parse(localStorage.getItem(email+":config"));
 
+  }
 
-    setDayFrequencyApiaries(day){
+  setConfigurationByEmail(email,listEnv,freq){
+    localStorage.setItem(email+":config",JSON.stringify({listEnv:listEnv,freq:freq}));
+  }
 
-
-    }
-
-    setEnvironnementType(listType){
-        
-    }
+  
 
 
 }
