@@ -36,3 +36,22 @@
   position:relative;
   top:1px;
 }
+
+@media (min-width: 58rem) {
+  .register__title {
+    font-size: 36px;
+  }
+
+  .register__label {
+    font-size: 30px;
+  }
+
+  .register__input {
+    font-size: 36px;
+  }
+
+  .register__button {
+    font-size: 30px;
+    width: 30rem;
+  }
+}

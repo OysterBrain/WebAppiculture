@@ -35,3 +35,18 @@
   position:relative;
   top:1px;
 }
+
+@media (min-width: 58rem) {
+  .login__label {
+    font-size: 36px;
+  }
+
+  .login__input {
+    font-size: 36px;
+  }
+
+  .login__button {
+    font-size: 30px;
+    width: 30rem;
+  }
+}

@@ -27,3 +27,11 @@
   position:relative;
   top:1px;
 }
+
+@media (min-width: 58rem) {
+
+  .menu__button {
+    font-size: 30px;
+    width: 30rem;
+  }
+}

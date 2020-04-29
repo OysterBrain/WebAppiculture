@@ -64,3 +64,26 @@
   position:relative;
   top:1px;
 }
+
+@media (min-width: 58rem) {
+  .config__title {
+    font-size: 36px;
+  }
+
+  .config__subtitle {
+    font-size: 30px;
+  }
+
+  .config__input {
+    font-size: 30px;
+  }
+
+  .config__button, .config__submit {
+    font-size: 30px;
+    width: 30rem;
+  }
+
+  .config__table_head, .config__table_data {
+    font-size: 26px;
+  }
+}

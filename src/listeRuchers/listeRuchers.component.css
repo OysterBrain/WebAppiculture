@@ -31,3 +31,17 @@
   width: 2rem;
   height: 2rem;
 }
+
+@media (min-width: 58rem) {
+  .list__title {
+    font-size: 36px;
+  }
+
+  .list {
+    margin: 1rem;
+  }
+
+  .list__table_head, .list__table_data {
+    font-size: 26px;
+  }
+}

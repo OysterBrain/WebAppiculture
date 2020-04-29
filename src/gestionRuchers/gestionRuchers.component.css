@@ -55,3 +55,22 @@
   position:relative;
   top:1px;
 }
+
+@media (min-width: 58rem) {
+  .gestion__title {
+    font-size: 36px;
+  }
+
+  .gestion__button {
+    font-size: 30px;
+    width: 30rem;
+  }
+
+  .gestion__table {
+    margin: 1rem;
+  }
+
+  .gestion__table_head, .gestion__table_data {
+    font-size: 26px;
+  }
+}

@@ -37,3 +37,23 @@
   width: 2rem;
   height: 2rem;
 }
+
+@media (min-width: 58rem) {
+
+  #map {
+    width: 80%;
+    height: 50vh;
+  }
+
+  .map__title {
+    font-size: 36px;
+  }
+
+  .map__unknown__table {
+    margin: 1rem;
+  }
+
+  .map__unknown__table_head, .map__unknown__table_data {
+    font-size: 26px;
+  }
+}
