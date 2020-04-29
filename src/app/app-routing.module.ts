@@ -9,6 +9,7 @@ import { ListeRuchersComponent } from '../listeRuchers/listeRuchers.component';
 import { CarteRucherComponent } from '../carteRucher/carteRucher.component';
 import { RegisterUserComponent } from '../registerUser/registerUser.component';
 import { AjoutEditionRucherComponent } from 'src/ajoutEditionRucher/ajoutEditionRucher.component';
+import {VisiteRucherComponent} from "../visiteRucher/visiteRucher.component";
 
 
 //Tableau des routes qui comporte l'ensemble des routes permettant de naviguer dans l'application
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'ListeRuchers', component: ListeRuchersComponent,canActivate: [AuthGuard]},
     { path: 'CarteRuchers', component: CarteRucherComponent,canActivate: [AuthGuard]},
     { path: 'Rucher', component : AjoutEditionRucherComponent, canActivate : [AuthGuard]},
+    { path : 'VisiteRucher', component: VisiteRucherComponent, canActivate : [AuthGuard]},
     { path: 'Login', component: LoginComponent },
     { path: 'Register', component: RegisterUserComponent}
 ];
