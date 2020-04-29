@@ -7,4 +7,22 @@
   width : 10rem;
 }
 
+.header__menu_h1 {
+  display: none
+}
+
+@media (min-width: 58rem) {
+  .header__menu {
+    display: flex;
+    align-items: center;
+    background-color: #e67e22;
+  }
+  .header__menu_h1 {
+    margin:  auto;
+    display: block;
+    font-size: 4rem;
+    color: #fff;
+  }
+}
+
 
