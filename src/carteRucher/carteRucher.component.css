@@ -1,4 +1,39 @@
-div{
-    height: 1000px;
-    width: 100%;
+#map{
+  height: 40vh;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map__title {
+  font-size: 26px;
+  padding-top: 1rem;
+}
+
+.map__unknown__table {
+  border: 2px solid #e67e22;
+  margin: auto;
+}
+
+.map__unknown__table_head {
+  font-size: 18px;
+  padding: .5rem;
+  border-right: 2px solid #e67e22;
+  border-bottom: 2px solid #e67e22;
+}
+
+.map__unknown__table_data {
+  font-size: 18px;
+  padding: .1rem;
+  border-right: 2px solid #e67e22;
+}
+
+.map__unknown__table_data_img {
+  width: 2rem;
+  height: 2rem;
 }
