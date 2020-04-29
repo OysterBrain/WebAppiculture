@@ -23,12 +23,19 @@ export class GestionRuchersComponent implements OnInit {
 
   }
 
+  //fonction qui appelle le service rucher pour supprimer un rucher en fonction de son index
+  //déclenché lors du click
   deleteRucher(indexRucher){
     this.rucherService.deleteRucher(this.emailUsers,indexRucher);
     window.location.reload();
   }
-
+  //fonction qui redirige vers la page rucher de l'id du rucher en parametre
   goToEditRucher(id){
     this.router.navigate(["/Rucher"], {queryParams: { id: id }});
+  }
+
+  //fonction qui redirige vers la page rucher 
+  goToAdd(){
+    this.router.navigate(["/Rucher"]);
   }
 }

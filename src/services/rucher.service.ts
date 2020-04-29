@@ -39,10 +39,23 @@ export class RucherService {
     return JSON.parse(localStorage.getItem(emailUser+":ruchers"));
   }
 
+  //fonction qui retourne la frequence de visite d'un rucher 
+  getFreqByIdRucher(idRucher,emailUser){
+    return this.getRucherById(idRucher,emailUser)._frequenceVisites;
+  }
+
   //fonction qui supprime un rucher en fonction de son index dans le tableau de rucher
   deleteRucher(emailUser,indexRucher){
     var ruchers = this.getAllRuchers(emailUser);
     ruchers.splice(indexRucher,1);
+    localStorage.setItem(emailUser+":ruchers",JSON.stringify(ruchers));
+  }
+  //fonction qui change de coordonnees en fonction de l'id rucher
+  changeCoordRucher(emailUser,idRucher,lat,long){
+    var ruchers = this.getAllRuchers(emailUser);
+    var indexRucher = ruchers.findIndex(rucher=>rucher._id==idRucher);
+    ruchers[indexRucher]._coordonnees.lng = long;
+    ruchers[indexRucher]._coordonnees.lat = lat;
     localStorage.setItem(emailUser+":ruchers",JSON.stringify(ruchers));
   }
 }

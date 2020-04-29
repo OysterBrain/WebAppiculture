@@ -77,9 +77,39 @@
   top:1px;
 }
 
+.visit__button {
+  border-radius: 5px;
+  padding: 15px 15px;
+  font-size: 18px;
+  text-decoration: none;
+  margin: 20px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  background-color: #e67e22;
+  box-shadow: 0px 5px 0px 0px #CD6509;
+  width : 15rem;
+  border: none;
+}
+
+
+.visit__button:hover {
+  background-color: #FF983C;
+}
+
+.visit__button:active {
+  position:relative;
+  top:1px;
+}
+
 @media (min-width: 58rem) {
   .visit__title {
     font-size: 36px;
+  }
+
+  .visit__button {
+    font-size: 30px;
+    width: 30rem;
   }
 
   .visit__harvest__title,

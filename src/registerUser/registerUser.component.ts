@@ -19,6 +19,7 @@ export class RegisterUserComponent implements OnInit {
     
   }
 
+  //fonction appelée lors de la validation 
   onSubmit(){
     if(this.password == this.passwordConfirm && this.email != null){
       if(!this.userService.userInserted(this.email)){

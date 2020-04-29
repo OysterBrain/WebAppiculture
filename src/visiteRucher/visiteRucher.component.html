@@ -9,7 +9,9 @@
 
   <section class="visit__coordinates">
     <h2 class="visit__coordinates__title"> Mise à jour des coordonnées : </h2>
-    <input class="visit__coordinates__input" type="text" [(ngModel)]="lat" [ngModelOptions]="{standalone: true}"/>
+    <p class="visit__new__p">latitude :  </p> <input class="visit__coordinates__input" type="text" [(ngModel)]="lat" [ngModelOptions]="{standalone: true}"/><br>
+    <p class="visit__new__p">longitude : </p>   <input class="visit__coordinates__input" type="text" [(ngModel)]="long" [ngModelOptions]="{standalone: true}"/>
+
   </section>
 
   <section class="visit__historical" >
@@ -41,8 +43,8 @@
     <input class="visit__new__input" type="number" [(ngModel)]="newNbHaussesRec" [ngModelOptions]="{standalone: true}"/>
     <p class="visit__new__p">Observations : </p>
     <textarea class="visit_observation_textArea" type="" [(ngModel)]="observations" [ngModelOptions]="{standalone: true}"  required></textarea>
-    <input class="visit__new__input" type="submit" value="valider" (click)="validateNewVisite()"/>
- 
+    
+    <button class="visit__button"(click)="validateNewVisite()">Valider</button>
 
   </section>
 </div>

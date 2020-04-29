@@ -11,7 +11,6 @@ export class VisiteRucherService {
   //Renvoi un tableau de visite en fonction de l'id du ruchet et de l'email de l'utilisateur
   getVisitesByIdRucher(idRucher,emailUser){
     var ruchers = this.rucherService.getRucherById(idRucher,emailUser);
-    console.log(ruchers)
     if(ruchers){
       
       return ruchers._visites;
@@ -54,6 +53,23 @@ export class VisiteRucherService {
     var indexRucher = ruchers.findIndex(rucher=> rucher._id == idRucher);
     ruchers[indexRucher]._visites.push(visite);
     localStorage.setItem(emailUser+":ruchers",JSON.stringify(ruchers));
+  }
+  // fonction qui renvois la derniere date de visite
+  getLatestVisite(idRucher,emailUser){
+    var visites = this.getVisitesByIdRucher(idRucher,emailUser);
+    var latest;
+    if(!visites){
+      return null
+    }else if(visites.length>0){
+      latest = visites[0]._date ;
+      visites.forEach(visite => {
+        if(visite._date>latest){
+          latest = visite._date;
+        }
+      });
+      return latest;
+    }
+    return null
   }
 
   

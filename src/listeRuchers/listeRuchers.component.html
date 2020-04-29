@@ -2,15 +2,18 @@
   <h1 class="list__title">Liste des ruchers </h1>
 
   <table class="list__table">
-
     <th class="list__table_head">Nom du rucher</th>
     <th class="list__table_head">Visiter</th>
 
-    <tr>
-      <td class="list__table_data">gdfgdfgdfg</td>
-      <td class="list__table_data"><img class="list__table_data_img" src="../assets/images/visit.png" alt="visiter"/></td>
+    <tr *ngFor="let rucher of listRuchers;let index = index;">
+      <td class="list__table_data">
+        <div class="red__circle" *ngIf="nbDaysBtwLatestVisite(rucher._id,latestVisite(rucher._id))>getFreq(rucher._id)"></div>
+        <div class="orange__circle" *ngIf="nbDaysBtwLatestVisite(rucher._id,latestVisite(rucher._id))>=getFreq(rucher._id)/2"></div>
+        <div class="green__circle" *ngIf="nbDaysBtwLatestVisite(rucher._id,latestVisite(rucher._id))<getFreq(rucher._id)/2"></div>
+        {{rucher._id}}
+      </td>
+      <td class="list__table_data"><img class="list__table_data_img" src="../assets/images/visit.png" alt="visiter" (click)="goToVisite(rucher._id)"/></td>
     </tr>
 
-    <!--remplir de tbody avec couleurs correspondantes et bouttons visites-->
   </table>
 </section>

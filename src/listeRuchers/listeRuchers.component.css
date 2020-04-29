@@ -32,6 +32,31 @@
   height: 2rem;
 }
 
+.orange_circle {
+  height: 25px;
+  width: 25px;
+  background-color: #e67e22;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red__circle{
+  height: 25px;
+  width: 25px;
+  background-color: #bb2929;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.green__circle{
+  height: 25px;
+  width: 25px;
+  background-color: #2a8650;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
 @media (min-width: 58rem) {
   .list__title {
     font-size: 36px;

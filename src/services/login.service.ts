@@ -25,7 +25,7 @@ export class LoginService {
     getUserConnected(){
        return localStorage.getItem("currentUser");
     }
-
+    //fonciton qui renvoi true ou false en fonction de si un utilisateur est connecté
     userConnected(){
         return localStorage.getItem("currentUser")?true:false;
     }

@@ -7,11 +7,12 @@ export class ConfigurationService {
   
   constructor() { }
 
+  //fonctioin qui renvoi la configuration en fonction de l'email
   getConfigurationByEmail(email){
     return JSON.parse(localStorage.getItem(email+":config"));
 
   }
-
+  //fonction qui ajoute un configuration
   setConfigurationByEmail(email,listEnv,freq){
     localStorage.setItem(email+":config",JSON.stringify({listEnv:listEnv,freq:freq}));
   }

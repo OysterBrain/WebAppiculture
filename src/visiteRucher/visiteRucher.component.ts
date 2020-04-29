@@ -24,6 +24,8 @@ export class VisiteRucherComponent implements OnInit {
   public firstDateVisite;
   public long;
   public lat;
+  public longBefore;
+  public latBefore;
   public observations;
   public error;
   constructor( private route: ActivatedRoute, 
@@ -36,11 +38,12 @@ export class VisiteRucherComponent implements OnInit {
     .subscribe(params => {
       this.id= params.idRucher 
     });
-    console.log(localStorage);
     this.emailUser = this.loginService.getUserConnected();
     this.rucher = this.rucherService.getRucherById(this.id,this.emailUser);
     this.long = this.rucher._coordonnees.lng;
     this.lat = this.rucher._coordonnees.lat;
+    this.longBefore = this.rucher._coordonnees.lng;
+    this.latBefore = this.rucher._coordonnees.lat;
     this.visites = this.visiteRucherService.getVisitesByIdRucher(this.id,this.emailUser);
     
     this.nbHausse = this.visiteRucherService.getNbHausseRecoltee(this.id,this.emailUser);
@@ -48,6 +51,7 @@ export class VisiteRucherComponent implements OnInit {
     
   }
 
+  //fonction qui valide une nouvelle visite 
   validateNewVisite(){
     var visite = new Visite();
     
@@ -56,6 +60,9 @@ export class VisiteRucherComponent implements OnInit {
     visite.nbHaussesRecoltees = this.newNbHaussesRec;
     visite.nourriture= this.food;
     visite.observations = this.observations;
+    if(this.long!=this.longBefore || this.lat!=this.latBefore){
+      this.rucherService.changeCoordRucher(this.emailUser,this.id,this.lat,this.long);
+    }
     if(visite.date && visite.dynamique && visite.nbHaussesRecoltees &&visite.nourriture && visite.observations){
       this.visiteRucherService.addVisite(this.id,this.emailUser,visite);
       window.location.reload();

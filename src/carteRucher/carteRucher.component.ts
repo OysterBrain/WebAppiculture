@@ -42,13 +42,13 @@ export class CarteRucherComponent implements OnInit {
    
   }
 
+  //fonction qui place les ruchers sur la carte 
   placeRuchers(){
     var ruchers = this.rucherService.getAllRuchers(this.loginService.getUserConnected());
     if(ruchers){
       ruchers.forEach(rucher => {
           if(rucher._coordonnees.lng && rucher._coordonnees.lat){
             this.listRuchersCoord.push(rucher);
-            
           }
           else{
             this.listRuchersWithoutCoord.push(rucher);
@@ -71,6 +71,7 @@ export class CarteRucherComponent implements OnInit {
     });
   }
 
+  //fonction qui route vers la page de visite du rucher en incluant l'id du rucher en queryparams
   goToVisite(idRucher){
     this.router.navigate(['/VisiteRucher'],{ queryParams: { idRucher: idRucher }});
   }

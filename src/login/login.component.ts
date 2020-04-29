@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
         this.error = "Echec de la connexion"; 
       }
   }
+
+  //fonction qui redirige vers s'enregister
   goToRegister(){
     this.router.navigate(['/Register']);
   }
