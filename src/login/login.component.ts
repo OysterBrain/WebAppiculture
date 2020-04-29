@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   //fonction qui est declenché lors du submit pour connecter l'utilisateur
   onSubmit(){
       if(this.loginService.connectUser(this.email,this.password)){
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
       }else{
         this.error = "Echec de la connexion"; 
       }
