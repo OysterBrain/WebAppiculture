@@ -2,13 +2,11 @@
 <div class="alert alert-danger" role="alert" *ngIf="error">
   {{error}}
 </div>
-
-<label>Email</label>
-<input type="text" [(ngModel)]="email">
-<label>Mot de Passe</label>
-<input type="password" [(ngModel)]="password" >
-<button (click)="onSubmit()">Se connecter</button>
-<button (click)="goToRegister()">Créer un compte</button>
-
-
-
+<section class="login">
+  <label class="login__label">Email</label>
+  <input type="text" class="login__input" [(ngModel)]="email">
+  <label class="login__label">Mot de Passe</label>
+  <input type="password" class="login__input" [(ngModel)]="password" >
+  <button class="login__button" (click)="onSubmit()">Se connecter</button>
+  <button class="login__button" (click)="goToRegister()">Créer un compte</button>
+</section>

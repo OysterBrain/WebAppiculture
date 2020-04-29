@@ -1,17 +1,17 @@
-<div id="map">
 
-</div>
+<section class="map">
+  <h1 class="map__title">Carte des ruchers</h1>
+  <div id="map"></div>
 
-<table class="map__unknown__table" *ngIf="listRuchersWithoutCoord.length>0">
+  <table class="map__unknown__table"  *ngIf="listRuchersWithoutCoord.length>0">
 
-  <thead class="map__unknown__table_name">Ruchers sans coordonnées</thead>
-  <thead class="map__unknown__table_visit">Visiter</thead>
-  <!-- ajouter tbody contenant les ruchers qui n'ont pas de coordonnées géographiques-->
-  <tbody >
+    <th class="map__unknown__table_head">Ruchers sans coordonnées</th>
+    <th class="map__unknown__table_head">Visiter</th>
+
     <tr *ngFor="let rucher of listRuchersWithoutCoord;let index = index;">
-      <td>{{rucher._id}}</td>
-      <td><button (click)="goToVisite(rucher._id)">VISITER</button></td>
+      <td class="map__unknown__table_data">{{rucher._id}}</td>
+      <td class="map__unknown__table_data"><img class="map__unknown__table_data_img" src="../assets/images/visit.png" alt="visiter" (click)="goToVisite(rucher._id)"/></td>
     </tr>
-  </tbody>
-</table>
 
+  </table>
+</section>

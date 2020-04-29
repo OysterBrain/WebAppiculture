@@ -1,18 +1,20 @@
-<h1 class="gestion__title">Gestion des ruches et ruchers</h1>
+<section class="gestion">
+  <h1 class="gestion__title">Gestion des ruches et ruchers</h1>
 
-<table class="gestion__table">
+  <table class="gestion__table">
 
-  <thead class="gestion__table_name">Nom du rucher</thead>
-  <thead class="gestion__table_edit">Editer</thead>
-  <thead class="gestion__table_delete">Supprimer</thead>
-  <tbody>
-    <tr *ngFor="let rucher of listRuchers;let index = index;">
-      <td>{{rucher._id}}</td>
-      <td><button (click)="goToEditRucher(rucher._id)">Editer</button></td>
-      <td><button (click)="deleteRucher(index)">Supprimer</button></td>
+    <th class="gestion__table_head">Nom du rucher</th>
+    <th class="gestion__table_head">Editer</th>
+    <th class="gestion__table_head">Supprimer</th>
+
+    <tr *ngFor="let rucher of listRuchers;let index = index;"> 
+      <td class="gestion__table_data">{{rucher._id}}</td>
+      <td class="gestion__table_data"><img class="gestion__table_data_img" src="../assets/images/edit.png" alt="supprimer rucher" (click)="goToEditRucher(rucher._id)"/></td>
+      <td class="gestion__table_data"><img class="gestion__table_data_img" src="../assets/images/trash.png" alt="supprimer rucher" (click)="deleteRucher(index)"/></td>
     </tr>
-  </tbody>
-  <!-- Ajouter les tbody en bouclant sur la liste des ruchers-->
-</table>
 
-<a class="gestion__add">Ajouter un rucher</a>
+    <!-- Ajouter les tbody en bouclant sur la liste des ruchers-->
+  </table>
+
+  <button class="gestion__button">Ajouter un rucher</button>
+</section>
