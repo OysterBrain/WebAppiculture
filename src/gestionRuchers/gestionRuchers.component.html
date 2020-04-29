@@ -9,7 +9,7 @@
 
     <tr *ngFor="let rucher of listRuchers;let index = index;"> 
       <td class="gestion__table_data">{{rucher._id}}</td>
-      <td class="gestion__table_data"><img class="gestion__table_data_img" src="../assets/images/edit.png" alt="supprimer rucher" (click)="goToEditRucher(rucher._id)"/></td>
+      <td class="gestion__table_data"><img class="gestion__table_data_img" src="../assets/images/edit.png" alt="editer rucher" (click)="goToEditRucher(rucher._id)"/></td>
       <td class="gestion__table_data"><img class="gestion__table_data_img" src="../assets/images/trash.png" alt="supprimer rucher" (click)="deleteRucher(index)"/></td>
     </tr>
 
