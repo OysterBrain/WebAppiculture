@@ -1,8 +1,8 @@
-<div class="menu">
-  <a class="menu__button" (click)="goTo('/Configuration')" >Configuration des visites et des environnements</a>
-  <a class="menu__button" (click)="goTo('/GestionRuches')">Gestion des ruches et des ruchers</a>
-  <a class="menu__button" (click)="goTo('/ListeRuchers')">Liste des ruchers</a>
-  <a class="menu__button" (click)="goTo('/CarteRuchers')">Carte des ruchers</a>
-</div>
+<section class="menu">
+  <button class="menu__button" (click)="goTo('/Configuration')" >Configuration des visites et des environnements</button>
+  <button class="menu__button" (click)="goTo('/GestionRuches')">Gestion des ruches et des ruchers</button>
+  <button class="menu__button" (click)="goTo('/ListeRuchers')">Liste des ruchers</button>
+  <button class="menu__button" (click)="goTo('/CarteRuchers')">Carte des ruchers</button>
+  <button class="menu__button" (click)="deconnect()">Se deconnecter</button>
+</section>
 
-<button (click)="deconnect()">Se deconnecter</button>

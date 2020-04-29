@@ -1,8 +1,11 @@
-<h1>S'enregister en tant que nouvel utilisateur</h1>
-<label>Email</label>
-<input type="text" [(ngModel)]="email"  required>
-<label>Mot de Passe</label>
-<input type="password" [(ngModel)]="password" required>
-<label>Confirmation du Mot de Passe</label>
-<input type="password" [(ngModel)]="passwordConfirm" required>
-<button (click)="onSubmit()">S'enregister</button>
+
+<section class="register">
+  <h1 class="register__title">S'enregister en tant que nouvel utilisateur</h1>
+  <label class="register__label">Email</label>
+  <input type="text" class="register__input" [(ngModel)]="email"  required>
+  <label class="register__label">Mot de Passe</label>
+  <input type="password" class="register__input" [(ngModel)]="password" required>
+  <label class="register__label">Confirmation du Mot de Passe</label>
+  <input type="password" class="register__input" [(ngModel)]="passwordConfirm" required>
+  <button class="register__button" (click)="onSubmit()">S'enregister</button>
+</section>

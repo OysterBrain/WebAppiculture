@@ -1,33 +1,29 @@
 
-<h1 class="config__title">Configuration</h1>
+<section class="config">
+  <h1 class="config__title">Configuration</h1>
 
-<form>
-  <h2 class="config__subtitle">Fréquence des visites : </h2>
-  <input class="config__input" type="number" [(ngModel)]="frequency" [ngModelOptions]="{standalone: true}"/>
-  <h2 class="config__subtitle"> Environnements types : </h2>
+  <form>
+    <h2 class="config__subtitle">Fréquence des visites : </h2>
+    <input class="config__input" type="number" [(ngModel)]="frequency" [ngModelOptions]="{standalone: true}"/>
+    <h2 class="config__subtitle"> Environnements types : </h2>
 
-  <table class="config__table">
-    <thead class="config__table_name">Environnement</thead>
-    <thead class="config__table_delete">Supprimer</thead>
-    <tbody>
+    <table class="config__table">
+      <th class="config__table_head">Environnement</th>
+      <th class="config__table_head">Supprimer</th>
       <tr *ngFor="let env of listEnv;let index = index;">
-        <td>{{env}}</td>
-        <td><button (click)="deleteEnv(index)">Supprimer</button></td>
+        <td class="config__table_data">{{env}}</td>
+        <td class="config__table_data"><img class="config__table_data_img" src="../assets/images/trash.png" alt="supprimer environnement" (click)="deleteEnv(index)"/></td>
       </tr>
-    </tbody>
-    <!-- mettre un for pour les tbody ici-->
 
-  </table>
+    </table>
 
-  <h2 class="config__subtitle">Ajouter environnement: </h2>
+    <h2 class="config__subtitle">Ajouter environnement : </h2>
 
-  <input type="text" class="config__input" [(ngModel)]="valueEnv" [ngModelOptions]="{standalone: true}"/>
-  <button (click)="addEnv()"> Ajouter </button>
+    <input type="text" class="config__input" [(ngModel)]="valueEnv" [ngModelOptions]="{standalone: true}"/>
+    <button class="config__button" (click)="addEnv()"> Ajouter environnement </button>
 
- 
+    <input class="config__submit" type="submit" value="valider configuration" (click)="validateConfig()"/>
+  </form>
+  <button class="config__button">Importer des données</button>
 
-  <input class="config__submit" type="submit" value="valider" (click)="validateConfig()"/>
-</form>
-<a class="config__import">Importer des données</a>
-
-
+</section>
