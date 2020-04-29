@@ -1,34 +1,49 @@
-<h1 class="visit__title">Visite du rucher METTRE NOM RUCHER ICI</h1>
+<h1 class="visit__title">Visite du rucher {{id}}</h1>
 
-<section class="visit__harvest">
-  <h2 class="visit__harvest__title">Hausses récoltées depuis <input class="visit__harvest__date" type="text"/> : </h2>
-  <h2 class="visit__harvest__number"> A REMPLIR </h2>
+<section class="visit__harvest" *ngIf="visites != undefined && visites.length>0">
+  <h2 class="visit__harvest__title">Hausses récoltées depuis le {{firstDateVisite | date: 'yyyy/MM/dd \'à\' HH:mm:ss'}} : </h2>
+  <h2 class="visit__harvest__number"> {{nbHausse}} </h2>
 </section>
 
 <section class="visit__coordinates">
-  <h2 class="visit__coordinates__title"> Mise à jour des coordonnées : </h2>
-  <input class="visit__coordinates__input" type="text"/>
+  <h2 class="visit__coordinates__title"> Mise à jour des coordonnées du rucher : </h2>
+  <label>latitude</label> <input class="visit__coordinates__lat__input" type="text"
+  [(ngModel)]="lat" [ngModelOptions]="{standalone: true}" required/>
+  <label>longitude</label> <input class="visit__coordinates__long__input" type="text" 
+  [(ngModel)]="long" [ngModelOptions]="{standalone: true}"required/>
 </section>
 
 <section class="visit__historical">
-  <h2 class="visit__historical__title">Historique des visites</h2>
-  <table class="visit__historical__table">
+  <h2 class="visit__historical__title">Historique des visites du rucher</h2>
+  <table class="visit__historical__table"  *ngIf="visites != undefined && visites.length>0" >
     <thead class="visit__historical_thead">Date</thead>
     <thead class="visit__historical_thead">Hausses Récoltées</thead>
+    <tbody>
+      <tr *ngFor="let visite of visites;let index = index;">
+        <td>{{visite._date | date: 'yyyy/MM/dd'}}</td>
+        <td>{{visite._nbHaussesRecoltees}}</td>
+      </tr>
+    </tbody>
   </table>
+  <p  *ngIf="visites == undefined || visites.length<0" >Pas de visite pour ce rucher</p>
 </section>
 
 <section class="visit__new">
-  <h2 class="visit__new__title">Nouvelle visite : </h2>
+  <h2 class="visit__new__title" >Nouvelle visite : </h2>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+  
   <p class="visit__new__p">Date : </p>
-  <input class="visit_new__input" type="text"/>
+  <input class="visit_new__input" type="date" required  [(ngModel)]="dateNewVisite" [ngModelOptions]="{standalone: true}"/>
   <p class="visit__new__p">Dynamique de développement : </p>
-  <input class="visit_new__input" type="text"/>
+  <input class="visit_new__input" type="text" required [(ngModel)]="dynDev" [ngModelOptions]="{standalone: true}"/>
   <p class="visit__new__p">Nourriture apportée : </p>
-  <input class="visit_new__input" type="text"/>
+  <input class="visit_new__input" type="text" [(ngModel)]="food" [ngModelOptions]="{standalone: true}" required/>
   <p class="visit__new__p">Hausses récoltées : </p>
-  <input class="visit_new__input" type="number"/>
-
-  <input class="visit__new__input" type="submit" value="valider"/>
+  <input class="visit_new__input" type="number" [(ngModel)]="newNbHaussesRec" [ngModelOptions]="{standalone: true}"  required/>
+  <p class="visit__new__p">Observations : </p>
+  <textarea class="visit_observation_textArea" type="" [(ngModel)]="observations" [ngModelOptions]="{standalone: true}"  required></textarea>
+  <input class="visit__new__input" type="submit" value="valider" (click)="validateNewVisite()"/>
 
 </section>

@@ -4,7 +4,15 @@ export class Visite {
     private _nourriture: string;
     private _nbHaussesRecoltees: number;
     private _observations: string;
+    private _date: Date;
+
     
+    public get date(): Date {
+        return this._date;
+    }
+    public set date(value: Date) {
+        this._date = value;
+    }
 
     public get dynamique(): string {
         return this._dynamique;

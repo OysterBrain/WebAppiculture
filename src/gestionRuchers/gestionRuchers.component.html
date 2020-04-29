@@ -5,7 +5,13 @@
   <thead class="gestion__table_name">Nom du rucher</thead>
   <thead class="gestion__table_edit">Editer</thead>
   <thead class="gestion__table_delete">Supprimer</thead>
-
+  <tbody>
+    <tr *ngFor="let rucher of listRuchers;let index = index;">
+      <td>{{rucher._id}}</td>
+      <td><button (click)="goToEditRucher(rucher._id)">Editer</button></td>
+      <td><button (click)="deleteRucher(index)">Supprimer</button></td>
+    </tr>
+  </tbody>
   <!-- Ajouter les tbody en bouclant sur la liste des ruchers-->
 </table>
 

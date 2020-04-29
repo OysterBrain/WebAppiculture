@@ -2,10 +2,16 @@
 
 </div>
 
-<table class="map__unknown__table">
+<table class="map__unknown__table" *ngIf="listRuchersWithoutCoord.length>0">
 
   <thead class="map__unknown__table_name">Ruchers sans coordonnées</thead>
   <thead class="map__unknown__table_visit">Visiter</thead>
   <!-- ajouter tbody contenant les ruchers qui n'ont pas de coordonnées géographiques-->
-
+  <tbody >
+    <tr *ngFor="let rucher of listRuchersWithoutCoord;let index = index;">
+      <td>{{rucher._id}}</td>
+      <td><button (click)="goToVisite(rucher._id)">VISITER</button></td>
+    </tr>
+  </tbody>
 </table>
+
