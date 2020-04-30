@@ -40,12 +40,14 @@ export class VisiteRucherComponent implements OnInit {
     });
     this.emailUser = this.loginService.getUserConnected();
     this.rucher = this.rucherService.getRucherById(this.id,this.emailUser);
-    this.long = this.rucher._coordonnees.lng;
-    this.lat = this.rucher._coordonnees.lat;
-    this.longBefore = this.rucher._coordonnees.lng;
-    this.latBefore = this.rucher._coordonnees.lat;
+    if(this.rucher._coordonnees){
+      this.long = this.rucher._coordonnees.lng;
+      this.lat = this.rucher._coordonnees.lat;
+      this.longBefore = this.rucher._coordonnees.lng;
+      this.latBefore = this.rucher._coordonnees.lat;
+    }
+   
     this.visites = this.visiteRucherService.getVisitesByIdRucher(this.id,this.emailUser);
-    
     this.nbHausse = this.visiteRucherService.getNbHausseRecoltee(this.id,this.emailUser);
     this.firstDateVisite = this.visiteRucherService.getFirstDate(this.id,this.emailUser);
     

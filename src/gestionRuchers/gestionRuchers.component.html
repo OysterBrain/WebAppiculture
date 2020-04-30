@@ -1,7 +1,7 @@
 <section class="gestion">
   <h1 class="gestion__title">Gestion des ruches et ruchers</h1>
 
-  <table class="gestion__table">
+  <table class="gestion__table" *ngIf="listRuchers != undefined && listRuchers.length>0">
 
     <th class="gestion__table_head">Nom du rucher</th>
     <th class="gestion__table_head">Editer</th>
@@ -15,6 +15,6 @@
 
     <!-- Ajouter les tbody en bouclant sur la liste des ruchers-->
   </table>
-
+  <p *ngIf="listRuchers == undefined || listRuchers.length==0">Vous avez inséré aucun rucher</p>
   <button class="gestion__button" (click)="goToAdd()">Ajouter un rucher</button>
 </section>

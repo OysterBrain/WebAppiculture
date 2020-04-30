@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/services/login.service';
 import { ConfigurationService } from 'src/services/configuration.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,8 +15,8 @@ export class ConfigurationComponent implements OnInit {
   public valueEnv :string;
   public frequency : number;
   public emailUser;
-  
-  constructor(private loginService: LoginService, private configurationService : ConfigurationService) { }
+  public error;  
+  constructor(private loginService: LoginService, private configurationService : ConfigurationService,private router:Router) { }
 
   
   ngOnInit() {
@@ -37,7 +38,13 @@ export class ConfigurationComponent implements OnInit {
 
   //fonction qui permet de valider la configuration et enregistre toutes les valeurs
   validateConfig(){
-    this.configurationService.setConfigurationByEmail(this.emailUser,this.listEnv,this.frequency);
+    if(this.emailUser&&this.listEnv&&this.frequency){
+      this.configurationService.setConfigurationByEmail(this.emailUser,this.listEnv,this.frequency);
+      this.router.navigate(["/"]);
+    }
+    else{
+      this.error = "Erreur dans l'ajout d'une configuration";
+    }
   }
 
   //fonction qui permet de supprimer un environnement en fonction de l'index

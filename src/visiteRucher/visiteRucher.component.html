@@ -1,8 +1,8 @@
 <div class="visit">
-  <h1 class="visit__title">Visite du rucher METTRE NOM RUCHER ICI</h1>
+  <h1 class="visit__title" *ngIf="rucher">Visite du rucher {{rucher._id}}</h1>
 
   <section class="visit__harvest" *ngIf="visites != undefined && visites.length>0">
-    <!-- <input class="visit__harvest__date" type="text"/> -->
+   
     <h2 class="visit__harvest__title">Hausses récoltées depuis le {{firstDateVisite | date: 'yyyy/MM/dd \'à\' HH:mm:ss'}} :  </h2>
     <h2 class="visit__harvest__number"> {{nbHausse}} </h2>
   </section>
@@ -15,7 +15,7 @@
   </section>
 
   <section class="visit__historical" >
-    <h2 class="visit__historical__title">Historique des visites</h2>
+    <h2 class="visit__historical__title" *ngIf="visites != undefined && visites.length>0">Historique des visites</h2>
     <table class="visit__historical__table" *ngIf="visites != undefined && visites.length>0">
       <th class="visit__historical__table_head">Date</th>
       <th class="visit__historical__table_head">Hausses Récoltées</th>
@@ -24,7 +24,7 @@
         <td>{{visite._nbHaussesRecoltees}}</td>
       </tr>
     </table>
-    <p  *ngIf="visites == undefined || visites.length<0" >Pas de visite pour ce rucher</p>
+    <p  *ngIf="visites == undefined || visites.length==0" >Pas de visite pour ce rucher</p>
   </section>
 
   <section class="visit__new">

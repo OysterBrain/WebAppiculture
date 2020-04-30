@@ -3,6 +3,7 @@ import { LoginService } from 'src/services/login.service';
 import { ConfigurationService } from 'src/services/configuration.service';
 import { RucherService } from 'src/services/rucher.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VisiteRucherService } from 'src/services/visiteRucher.service';
 
 @Component({
   selector: 'app-ajoutEditionRucher',
@@ -20,12 +21,14 @@ export class AjoutEditionRucherComponent implements OnInit {
   public listVisite:[];
   public freqVisite : number;
   public modif = false;
+  public error;
   public emailUser = this.loginService.getUserConnected()
   constructor(private loginService: LoginService,
               private configurationService: ConfigurationService,
               private rucherService : RucherService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private visiteRucherService: VisiteRucherService) { }
 
 
   async ngOnInit() {
@@ -40,16 +43,16 @@ export class AjoutEditionRucherComponent implements OnInit {
       if(rucher){
         this.descr=rucher._description;
         this.nbRuches= rucher._nbRuches;
-        
+        this.listVisite = this.visiteRucherService.getVisitesByIdRucher(this.id,this.emailUser);
       }
     }
+
    
     var conf = this.configurationService.getConfigurationByEmail(this.emailUser);
     if(conf){
       this.freqVisite = conf.freq;
       this.listEnv = conf.listEnv;
     }
-   
     await this.getPosition().then(data=>this.coordGeo = {lng : data.lng , lat : data.lat} );
 
   }
@@ -64,7 +67,7 @@ export class AjoutEditionRucherComponent implements OnInit {
           resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
         },
         err => {
-          reject(err);
+          
         });
     });
 
@@ -72,9 +75,15 @@ export class AjoutEditionRucherComponent implements OnInit {
 
   //fonction qui valide l'ajout ou la modification d'un rucher
   validate(){
-    this.rucherService.addRucher(this.id,this.nbRuches,this.descr,this.freqVisite,this.coordGeo,this.dateCrea,this.emailUser);
    
-    this.router.navigate(['/CarteRuchers']);
+    if(this.id && this.nbRuches && this.descr && this.freqVisite  && this.emailUser){
+      this.dateCrea = new Date();
+      this.rucherService.addRucher(this.id,this.nbRuches,this.descr,this.freqVisite,this.coordGeo,this.dateCrea,this.emailUser);
+      this.router.navigate(['/CarteRuchers']);
+    }else{
+      this.error="Erreur dans les informations afin d'ajouter une nouveau rucher";
+    }
+    
   }
 
 }

@@ -9,7 +9,11 @@ export class ConfigurationService {
 
   //fonctioin qui renvoi la configuration en fonction de l'email
   getConfigurationByEmail(email){
-    return JSON.parse(localStorage.getItem(email+":config"));
+    var config = JSON.parse(localStorage.getItem(email+":config"));
+    if(config){
+      return config
+    }
+    return null
 
   }
   //fonction qui ajoute un configuration

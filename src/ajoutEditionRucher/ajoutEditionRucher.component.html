@@ -2,29 +2,34 @@
 <section class="addedit">
   <h1 class="addedit__title" *ngIf="modif">Modification Rucher {{id}}</h1>
   <h1 class="addedit__title" *ngIf="!modif">Ajout Rucher </h1>
-
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
   <p class="addedit__p">Identifiant : </p>
   <input class="addedit__input" type="text"  [(ngModel)]="id" [ngModelOptions]="{standalone: true}"/>
 
   <p class="addedit__p">Nombre de ruches : </p>
   <input class="addedit__input" type="number"  [(ngModel)]="nbRuches" [ngModelOptions]="{standalone: true}"/>
-
+  
   <p class="addedit__p">Descriptif environnement : </p>
-  <select class="addedit__select"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}">
-    <option *ngFor="let env of listEnv">{{env}}</option>
-  </select>
-
-  <!-- <p class="addedit__section__p">Coordonnées géographiques : </p>
-  <input class="addedit__section__input" type="text"/> -->
-<!--
-  <p class="addedit__section__p">Date de création du rucher : </p>
-  <input class="addedit__section__input" type="text"/> -->
-
-  <table class="addedit__table">
-    <th class="addedit__table_head">Historique des visites</th>
-    <!-- si modification, liste des visites -->
-  </table>
-
+    <select class="addedit__select"  *ngIf="listEnv != undefined && listEnv.length>0"
+                                      [(ngModel)]="descr" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let env of listEnv">{{env}}</option>
+    </select>
+    <p *ngIf="listEnv == undefined || listEnv.length==0">Pas d'environnement veuillez en insérer dans l'onglet configuration</p>
+  <div *ngIf="modif">
+    <p class="addedit__p" *ngIf="modif">Historique des visites : </p>
+    <table class="addedit__table" *ngIf=" listVisite != undefined && listVisite.length>0" >
+      <th class="addedit__table_head">Date</th>
+      <th class="addedit__table_head">Hausses Récoltées</th>
+      <tr *ngFor="let visite of listVisite;let index = index;">
+        <td>{{visite._date | date: 'yyyy/MM/dd'}}</td>
+        <td>{{visite._nbHaussesRecoltees}}</td>
+      </tr>
+    </table>
+    <p  *ngIf=" modif && listVisite == undefined || listVisite.length<0 " >Pas de visite pour ce rucher</p>
+  </div>
+ 
   <p class="addedit__p">Fréquence des visites : </p>
   <input class="addedit__input" type="number"  [(ngModel)]="freqVisite" [ngModelOptions]="{standalone: true}"/>
 

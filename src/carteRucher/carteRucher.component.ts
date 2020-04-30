@@ -47,7 +47,7 @@ export class CarteRucherComponent implements OnInit {
     var ruchers = this.rucherService.getAllRuchers(this.loginService.getUserConnected());
     if(ruchers){
       ruchers.forEach(rucher => {
-          if(rucher._coordonnees.lng && rucher._coordonnees.lat){
+          if(rucher._coordonnees &&rucher._coordonnees.lng && rucher._coordonnees.lat){
             this.listRuchersCoord.push(rucher);
           }
           else{
@@ -56,19 +56,21 @@ export class CarteRucherComponent implements OnInit {
       });
     
     }
-
-    this.listRuchersCoord.forEach(rucherCoord => {
-      const popupInfo = "<b>Rucher : "+rucherCoord._id+"</b><br>"+ rucherCoord._nbRuches + 'ruches '+ "<br> <button class='visit'>VISITER</button>";
-      const marker = L.marker([rucherCoord._coordonnees.lat,rucherCoord._coordonnees.lng],this.icon).addTo(this.map);
-      marker.bindPopup(popupInfo).on("popupopen", (a) => {
-        var popUp = a.target.getPopup()
-        popUp.getElement()
-       .querySelector(".visit")
-       .addEventListener("click", e => {
-         this.goToVisite(rucherCoord._id);
-       });
-   })  
-    });
+    if(this.listRuchersCoord!=undefined && this.listRuchersCoord.length>0){
+      this.listRuchersCoord.forEach(rucherCoord => {
+        const popupInfo = "<b>Rucher : "+rucherCoord._id+"</b><br>"+ rucherCoord._nbRuches + 'ruches '+ "<br> <button class='visit'>VISITER</button>";
+        const marker = L.marker([rucherCoord._coordonnees.lat,rucherCoord._coordonnees.lng],this.icon).addTo(this.map);
+        marker.bindPopup(popupInfo).on("popupopen", (a) => {
+          var popUp = a.target.getPopup()
+          popUp.getElement()
+         .querySelector(".visit")
+         .addEventListener("click", e => {
+           this.goToVisite(rucherCoord._id);
+         });
+        })  
+      });
+    }
+    
   }
 
   //fonction qui route vers la page de visite du rucher en incluant l'id du rucher en queryparams

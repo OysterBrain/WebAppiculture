@@ -54,8 +54,13 @@ export class RucherService {
   changeCoordRucher(emailUser,idRucher,lat,long){
     var ruchers = this.getAllRuchers(emailUser);
     var indexRucher = ruchers.findIndex(rucher=>rucher._id==idRucher);
-    ruchers[indexRucher]._coordonnees.lng = long;
-    ruchers[indexRucher]._coordonnees.lat = lat;
+    if(ruchers[indexRucher]._coordonnees){
+      ruchers[indexRucher]._coordonnees.lng = long;
+      ruchers[indexRucher]._coordonnees.lat = lat;
+    }else{
+      ruchers[indexRucher]._coordonnees = {lng : long , lat : lat}
+    }
+    
     localStorage.setItem(emailUser+":ruchers",JSON.stringify(ruchers));
   }
 }
